@@ -280,7 +280,7 @@ int main(int argc, char* argv[]) {
     
     vector<string> nodes = parallel_bfs(start_node, depth);
     
-    cout << "\nResults:\n";
+    cout << "Results:\n";
     for (const auto& node : nodes)
         cout << "- " << node << "  ";
 
@@ -288,8 +288,8 @@ int main(int argc, char* argv[]) {
     const chrono::duration<double> elapsed_seconds{finish - start};
     
     cout << "\n\n------------------------------------------------------\n";
-    cout << "Time to crawl: " << elapsed_seconds.count() << "s\n";
-    cout << "Nodes found: " << nodes.size() << endl;
+    cout << "Time passed: " << elapsed_seconds.count() << "s\n";
+    cout << "Nodes Found: " << nodes.size() << endl;
     cout << "------------------------------------------------------\n\n";
     curl_global_cleanup();
     
