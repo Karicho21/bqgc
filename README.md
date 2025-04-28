@@ -10,3 +10,4 @@ But before you begin, make sure you have access to
 
 Steps to compile and experiment:
 
+g++ bg.cpp -o gtg -I ~/rapidjson/include -lcurl
