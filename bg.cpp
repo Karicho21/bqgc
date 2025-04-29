@@ -257,8 +257,9 @@ vector<string> parallel_bfs(const string& start, int depth, int num_threads = 4)
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        cerr << "Please make sure to enter " << argv[0] << " <node_name> <depth>\n";
+    if (argc < 3 || argc > 4) { 
+        cerr << "Please enter : " << argv[0] << " <node_name> <depth> [thread_count]\n";
+        cerr << "Example: " << argv[0] << " \"Tom Hanks\" 2 4\n";
         return 1;
     }
 
@@ -274,22 +275,30 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    cout << "\n------------------- Starting BFS from: " << start_node << " with depth " << depth << "------------------- \n" << endl;
+    int num_threads = 8;
+    
+    if (argc == 4) {
+        try {
+            num_threads = stoi(argv[3]);
+        } catch (const exception& e) {
+            cerr << "Error: Thread count must be an integer. Using default 8 threads.\n";
+        }
+    }
+
+    cout << "\n------------------- Starting BFS from: " << start_node << " with depth " << depth << " ------------------- \n" << endl;
 
     const auto start{chrono::steady_clock::now()};
-    
-    vector<string> nodes = parallel_bfs(start_node, depth);
+    vector<string> nodes = parallel_bfs(start_node, depth, num_threads);
+    const auto finish{chrono::steady_clock::now()};
+    const chrono::duration<double> elapsed_seconds{finish - start};
     
     cout << "Results:\n";
     for (const auto& node : nodes)
         cout << "- " << node << "  ";
 
-    const auto finish{chrono::steady_clock::now()};
-    const chrono::duration<double> elapsed_seconds{finish - start};
-    
     cout << "\n\n------------------------------------------------------\n";
-    cout << "Time passed: " << elapsed_seconds.count() << "s\n";
-    cout << "Nodes Found: " << nodes.size() << endl;
+    cout << "Time passed: " << elapsed_seconds.count() << " seconds\n";
+    cout << "Nodes found: " << nodes.size() << endl;
     cout << "------------------------------------------------------\n\n";
     curl_global_cleanup();
     
