@@ -23,9 +23,12 @@ Sample output:
 - ./gtg "Tom Hanks" 3 8 -> Time passed: 10.1929 seconds, Nodes found: 5911
 - ./gtg "Tom Hanks" 4 8 -> Time passed: 65.9927 seconds, Nodes found: 29790
  
-- ./gtg "Tom Hanks" 1 16 -> Time passed: 0.174537 seconds, Nodes found: 40
-- ./gtg "Tom Hanks" 2 16 -> Time passed: 0.547544 seconds, Nodes found: 888
-- ./gtg "Tom Hanks" 3 16 -> Time passed: 5.18631 seconds, Nodes found: 5911
-- ./gtg "Tom Hanks" 4 16 -> Time passed: 33.2193 seconds, Nodes found: 29790
+- ./gtg "Tom Hanks" 1 16 -> Time passed: 0.174537 seconds, Nodes found: 40 (x1.03 speed up)
+- ./gtg "Tom Hanks" 2 16 -> Time passed: 0.547544 seconds, Nodes found: 888 (x1.31 speed up)
+- ./gtg "Tom Hanks" 3 16 -> Time passed: 5.18631 seconds, Nodes found: 5911 (x1.97 speed up)
+- ./gtg "Tom Hanks" 4 16 -> Time passed: 33.2193 seconds, Nodes found: 29790 (x1.99 speed up)
 
 Time varies each run. You won't get same time each run but should be similar. (because sometimes centaurus is busy)
+
+Conclusion: 
+When depth is low number like 1 or 2, it is harder to observe the speed up using more threads, simply because there are not many nodes to go through. However, when depth gets larger and there is an increase of nodes to go through, speed up makes significant difference in runtime. For this program, speed up correlates to the increase in number of threads. If number of threads triples, the speed up is =< x3 therefore runtime is 1/3 of original time.
