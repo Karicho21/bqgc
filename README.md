@@ -13,7 +13,7 @@ Steps to compile and experiment:
 2. Authenticate with Duo
 3. Type "g++ bg.cpp -o gtg -I ~/rapidjson/include -lcurl" to create executable file named "gtg".
 4. Schedule the job by "sbatch gtg.sh"
-5. Outcome should be something like "Submitted batch job [????]". It also creates  file called "record.txt" and it will have all the runtime log.
+5. Outcome should be something like "Submitted batch job [????]". It also creates  file called "record_8.txt" and "record_16.txt" it will have all the runtime log.
 6. Wait a bit for command to finish running and record the time it takes.
 7.  If you would like a csv file recording the time, type "sbatch npf.sh > timelog.csv". It will schedule the job and record the time onto csv file called timelog.csv. You can name the file whatever you desire, but this timelog is what I named.
 
