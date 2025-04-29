@@ -33,6 +33,7 @@ Time varies each run. You won't get same time each run but should be similar. (b
 Conclusion: 
 
 When depth is low number like 1 or 2, it is harder to observe the speed up using more threads, simply because there are not many nodes to go through. However, when depth gets larger and there is an increase of nodes to go through, speed up makes significant difference in runtime. For this program, speed up correlates to the increase in number of threads. If number of threads triples, the speed up is =< x3 therefore runtime is 1/3 of original time.
+
 For reference: 
-./gtg "Tom Hanks" 4 32 -> Time passed: 16.9189 seconds
-./gtg "Tom Hnaks" 4 64 -> Time passed: 8.63938 seconds
+- ./gtg "Tom Hanks" 4 32 -> Time passed: 16.9189 seconds
+- ./gtg "Tom Hnaks" 4 64 -> Time passed: 8.63938 seconds
